@@ -558,9 +558,10 @@ Template Name: DreamsTour - Bootstrap Template
     $(".counter").addClass("animated fadeInDownBig");
   }
 
-  // Fligt Check
   $(".banner-form .form-check-input").on("change", function (e) {
     var radioval = $(this).val();
+    
+    // Handle flight type options
     if (radioval === "roundtrip") {
       $(".round-drip").show();
       $(".multi-trip").hide();
@@ -569,16 +570,13 @@ Template Name: DreamsTour - Bootstrap Template
       $(".round-drip").hide();
       $(".multi-trip").show();
       $(".normal-trip").hide();
-    } else {
+    } else if (radioval === "oneway") {
       $(".round-drip").hide();
       $(".multi-trip").hide();
       $(".normal-trip").show();
     }
-  });
-
-  // Fligt Check
-  $(".banner-form .form-check-input").on("change", function (e) {
-    var radioval = $(this).val();
+    
+    // Handle car rental options
     if (radioval === "different-drop") {
       $(".return-drop").show();
       $(".dropoff-time").show();
@@ -599,11 +597,6 @@ Template Name: DreamsTour - Bootstrap Template
       $(".hourly-time").show();
       $(".pickup-airport").hide();
       $(".from-location").show();
-    } else {
-      $(".return-drop").hide();
-      $(".dropoff-time").hide();
-      $(".hourly-time").hide();
-      $(".pickup-airport").hide();
     }
   });
 
@@ -612,38 +605,6 @@ Template Name: DreamsTour - Bootstrap Template
     $(".fav-icon").on("click", function () {
       $(this).toggleClass("selected");
     });
-  }
-
-  // View More
-  if ($(".more-view").length > 0) {
-    const buttons = document.querySelectorAll(".more-view");
-    const containers = document.querySelectorAll(".more-content");
-    buttons.forEach((button, index) => {
-      let isLess = true;
-      const container = containers[index];
-      function viewMoreLess() {
-        if (isLess) {
-          isLess = false;
-          container.style.height = container.scrollHeight + "px";
-          button.innerHTML = "Show Less";
-        } else {
-          isLess = true;
-          container.style.height = "148px";
-          button.innerHTML = "Show More";
-        }
-      }
-      button.addEventListener("click", viewMoreLess);
-    });
-  }
-
-  // Stick Sidebar
-  if ($(window).width() > 1199) {
-    if ($(".theiaStickySidebar").length > 0) {
-      $(".theiaStickySidebar").theiaStickySidebar({
-        // Settings
-        additionalMarginTop: 30,
-      });
-    }
   }
 
   // Scroll Top
